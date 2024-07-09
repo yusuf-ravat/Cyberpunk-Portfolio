@@ -101,18 +101,7 @@ sliderTrack.addEventListener('mouseleave', () => {
     sliderTrack.style.animationPlayState = 'running';
 });
 
-// Add this for the cyber button effect
-document.querySelector('.cyber-button').addEventListener('mouseover', function() {
-    this.style.color = '#255784';
-    this.style.background = '#00fffc';
-    this.style.boxShadow = '0 0 10px #00fffc, 0 0 40px #00fffc, 0 0 80px #00fffc';
-});
-
-document.querySelector('.cyber-button').addEventListener('mouseout', function() {
-    this.style.color = '#00fffc';
-    this.style.background = 'transparent';
-    this.style.boxShadow = 'none';
-});
+//mobile view
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -191,3 +180,158 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Particles.js configuration
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#00fffc" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#00fffc",
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "repulse" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            },
+            modes: {
+                repulse: { distance: 100, duration: 0.4 },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+    
+
+    // Cyber button effect
+    document.querySelector('.cyber-button').addEventListener('mouseover', function() {
+        this.style.color = '#255784';
+        this.style.background = '#00fffc';
+        this.style.boxShadow = '0 0 10px #00fffc, 0 0 40px #00fffc, 0 0 80px #00fffc';
+    });
+
+    document.querySelector('.cyber-button').addEventListener('mouseout', function() {
+        this.style.color = '#00fffc';
+        this.style.background = 'transparent';
+        this.style.boxShadow = 'none';
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const loaderContent = document.querySelector('.loader-content');
+    const errorMessage = document.querySelector('.error-message');
+    const progressBar = document.querySelector('.progress');
+    const retryBtn = document.querySelector('.retry-btn');
+    const mainContent = document.getElementById('main-content');
+
+
+    function checkInternetConnection() {
+        return navigator.onLine;
+    }
+
+    function showErrorMessage() {
+        loaderContent.style.display = 'none';
+        errorMessage.style.display = 'block';
+    }
+
+    function hideErrorMessage() {
+        loaderContent.style.display = 'block';
+        errorMessage.style.display = 'none';
+    }
+
+    function simulateLoading() {
+        let progress = 0;
+        let progress_speed=100;
+        const interval = setInterval(() => {
+            if (!checkInternetConnection()) {
+                clearInterval(interval);
+                showErrorMessage();
+                return;
+            }
+
+            progress += Math.random() * 10;
+            
+            if (progress >progress_speed) progress = progress_speed;
+            progressBar.style.width = `${progress}%`;
+            if (progress === progress_speed) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loaderWrapper.style.opacity = '0';
+                    mainContent.style.opacity = '1';
+                    setTimeout(() => {
+                        loaderWrapper.style.display = 'none';
+                    }, 400);
+                }, 400);
+            }
+        }, 100);
+    }
+
+    retryBtn.addEventListener('click', () => {
+        if (checkInternetConnection()) {
+            hideErrorMessage();
+            simulateLoading();
+            
+        }
+    });
+    retryBtn.addEventListener('click', () => {
+        // Refresh the page when the RECONNECT button is clicked
+        window.location.reload();
+    });
+    simulateLoading();
+});
+//    document.getElementById('resume-link').addEventListener('click', function(event) {
+//                     event.preventDefault();
+//                     window.open(this.href, '_blank');
+//                 });
+// document.addEventListener('DOMContentLoaded', () => {
+//     const blogSlider = document.querySelector('.blog-slider');
+//     let isDown = false;
+//     let startX;
+//     let scrollLeft;
+
+//     blogSlider.addEventListener('mousedown', (e) => {
+//         isDown = true;
+//         startX = e.pageX - blogSlider.offsetLeft;
+//         scrollLeft = blogSlider.scrollLeft;
+//     });
+
+//     blogSlider.addEventListener('mouseleave', () => {
+//         isDown = false;
+//     });
+
+//     blogSlider.addEventListener('mouseup', () => {
+//         isDown = false;
+//     });
+
+//     blogSlider.addEventListener('mousemove', (e) => {
+//         if (!isDown) return;
+//         e.preventDefault();
+//         const x = e.pageX - blogSlider.offsetLeft;
+//         const walk = (x - startX) * 2;
+//         blogSlider.scrollLeft = scrollLeft - walk;
+//     });
+// });
