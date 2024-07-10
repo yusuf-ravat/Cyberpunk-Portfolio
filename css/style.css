@@ -685,7 +685,7 @@ section {
 
 .timeline-icon {
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -701,11 +701,11 @@ section {
 }
 
 .timeline-item:nth-child(odd) .timeline-icon {
-    right: -25px;
+    right: -10px;
 }
 
 .timeline-item:nth-child(even) .timeline-icon {
-    left: -25px;
+    left: -10px;
 }
 
 .timeline-content {
@@ -1174,20 +1174,21 @@ border-top: 1px solid rgba(0, 255, 0, 0.3);
         transform: translateY(-8px) rotate(-45deg);
     }
     .slide img {
-        width: 85%;
+        width: 50%;
     }
     .slide {
         flex: 0 0 200px;
         padding: 0px 0px;
+        margin-left: -80px;
     }
     .client-logo-slider::before {
         left: 0;
-        /* background: linear-gradient(to right, #0a0a0a, transparent); */
+        background: none;
     }
     
     .client-logo-slider::after {
         right: 0;
-        /* background: linear-gradient(to left, #0a0a0a, transparent); */
+        background: none;
     }
 }
 
