@@ -47,6 +47,3 @@ Feel free to fork this repository and customize it for your own portfolio. Updat
 - LinkedIn: [Yusuf Ravat](https://www.linkedin.com/in/yusuf-ravat)
 - GitHub: [yusuf-ravat](https://github.com/yusuf-ravat)
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
