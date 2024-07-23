@@ -4,7 +4,8 @@
 
 This repository contains the source code for my personal portfolio website. As a software developer passionate about innovative technologies, I've designed this portfolio with a cyberpunk theme to showcase my skills, projects, and professional journey in an engaging and visually striking manner.
 
-# Demo [Link](https://yusufravat.netlify.app)
+[Demo](https://yusufravat.netlify.app)
+
 ## Features
 
 - Responsive design for optimal viewing on all devices
